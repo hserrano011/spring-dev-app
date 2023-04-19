@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 public class Tarjeta {
    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
    @Column
     private String numero;
