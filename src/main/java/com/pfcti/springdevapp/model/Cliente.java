@@ -26,4 +26,10 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Direccion> direcciones;
 
+    @Column
+    private String pais;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Cuenta> cuentas;
+
 }
