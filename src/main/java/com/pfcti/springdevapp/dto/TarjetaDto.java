@@ -12,5 +12,6 @@ public class TarjetaDto {
       private String numero;
         private String tipo;
     private int clienteId;
+    private boolean estado;
 
 }

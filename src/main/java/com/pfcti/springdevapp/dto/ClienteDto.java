@@ -14,5 +14,6 @@ public class ClienteDto {
     private List<DireccionDto> direcciones;
     private String pais;
     private List<CuentaDto> cuentas;
+    private List<TarjetaDto> tarjetas;
 
 }

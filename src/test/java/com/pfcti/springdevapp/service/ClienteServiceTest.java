@@ -124,5 +124,20 @@ class ClienteServiceTest {
 
     }
 
+    @Test
+    void findByApellidosAndAndNombre() {
+        List<ClienteDto> clientesDtos = clienteService.findByApellidosAndAndNombre("SANCHEZ","RAUL");
+        assertFalse(clientesDtos.isEmpty());
+        System.out.println("Cliente encontrado: " + clientesDtos.get(0).getApellidos());
+        assertEquals("SANCHEZ",clientesDtos.get(0).getApellidos());
+
+    }
+
+    @Test
+    void obtenerClientesExtranjerosYTarjetasInactivas() {
+        List<ClienteDto> clienteDtos = clienteService.obtenerClientesExtranjerosYTarjetasInactivas("CRC");
+        clienteDtos.forEach(cliente -> System.out.println("Cliente: " + cliente.getApellidos()));
+        assertEquals(1, clienteDtos.size());
+    }
 }
 

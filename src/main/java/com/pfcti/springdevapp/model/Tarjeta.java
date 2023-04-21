@@ -20,4 +20,6 @@ public class Tarjeta {
     @JoinColumn (name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;
 
+    @Column
+    private boolean estado;
 }
