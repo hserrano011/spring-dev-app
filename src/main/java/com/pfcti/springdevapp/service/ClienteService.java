@@ -1,5 +1,6 @@
 package com.pfcti.springdevapp.service;
 
+import com.pfcti.springdevapp.criteria.ClienteSpecification;
 import com.pfcti.springdevapp.dto.ClienteDto;
 import com.pfcti.springdevapp.model.Cliente;
 import com.pfcti.springdevapp.repository.*;
@@ -21,6 +22,7 @@ public class ClienteService {
     private CuentaRepository cuentaRepository;
     private TarjetaRepository tarjetaRepository;
     private InversionRepository inversionRepository;
+    private ClienteSpecification clienteSpecification;
 
     public void insertarCliente (ClienteDto clienteDto){
         Cliente cliente = new Cliente();
@@ -141,6 +143,15 @@ public class ClienteService {
             clienteDtos.add(fromClienteToClienteDto(cliente));
         }));
         return clienteDtos;
+    }
+
+
+    public List <ClienteDto> busquedaDinamicaPorCriterios (ClienteDto clienteDtoFilter){
+        return clienteRepository
+                .findAll(clienteSpecification.buildFilter(clienteDtoFilter))
+                .stream()
+                .map(this::fromClienteToClienteDto)
+                .collect(Collectors.toList());
     }
 
 

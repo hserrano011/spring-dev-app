@@ -139,5 +139,45 @@ class ClienteServiceTest {
         clienteDtos.forEach(cliente -> System.out.println("Cliente: " + cliente.getApellidos()));
         assertEquals(1, clienteDtos.size());
     }
+
+    @Test
+    void busquedaDinamicaPorCriterios() {
+        List<ClienteDto> clienteDtos = clienteService.busquedaDinamicaPorCriterios(new ClienteDto());
+        assertFalse(clienteDtos.isEmpty());
+        clienteDtos.forEach(clienteDto -> {System.out.println(" >>>>>>>>>>> TC1>>>>>>>>>>> Cliente: " +clienteDto.getApellidos());});
+        assertEquals(3,clienteDtos.size() >=2);
+
+        ClienteDto clienteDto = new ClienteDto();
+        clienteDto.setApellidos("SANCHEZ");
+        clienteDtos = clienteService.busquedaDinamicaPorCriterios(clienteDto);
+        clienteDtos.forEach(clienteDto2 -> {System.out.println(" >>>>>>>>>>> TC2>>>>>>>>>>> Cliente: " +clienteDto2.getApellidos());});
+        assertTrue(clienteDtos.size() >1);
+
+
+         clienteDto = new ClienteDto();
+        clienteDto.setApellidos("SANCHEZ");
+        clienteDto.setNombre("HORACIO");
+        clienteDtos = clienteService.busquedaDinamicaPorCriterios(clienteDto);
+        clienteDtos.forEach(clienteDto3 -> {System.out.println(" >>>>>>>>>>> TC3>>>>>>>>>>> Cliente: " +clienteDto3.getApellidos());});
+        assertTrue(clienteDtos.size() == 1);
+
+        clienteDto = new ClienteDto();
+        clienteDto.setApellidos("SANCHEZ");
+        clienteDto.setCedula("111");
+        clienteDtos = clienteService.busquedaDinamicaPorCriterios(clienteDto);
+        clienteDtos.forEach(clienteDto4 -> {System.out.println(" >>>>>>>>>>> TC4>>>>>>>>>>> Cliente: " +clienteDto4.getApellidos());});
+        assertTrue(clienteDtos.size() == 1);
+
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>TC5>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        clienteDto = new ClienteDto();
+        clienteDto.setApellidos("SANCHEZ");
+        clienteDto.setNombre("HORACIO");
+        clienteDto.setCedula("1111");
+        clienteDtos = clienteService.busquedaDinamicaPorCriterios(clienteDto);
+        clienteDtos.forEach(clienteDto5 -> {System.out.println(" >>>>>>>>>>> TC5>>>>>>>>>>> Cliente: " +clienteDto5.getApellidos());});
+        assertTrue(clienteDtos.size() == 1);
+
+    }
 }
 

@@ -22,6 +22,6 @@ public class Cuenta {
     private Cliente cliente;
 
     @Column
-    private boolean estado;
+    private Boolean estado;
 
 }
