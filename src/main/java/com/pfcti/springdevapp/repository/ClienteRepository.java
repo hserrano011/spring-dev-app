@@ -24,4 +24,11 @@ public interface ClienteRepository extends JpaRepository <Cliente, Integer>, Jpa
     List<Cliente> findByApellidosAndAndNombre(String apellidos, String nombre);
 
     List<Cliente> findClienteByPaisIsNotContainingIgnoreCaseAndAndTarjetas_estadoIsFalse (String pais);
+
+    // Lunes 24 de abril de 2023
+    List<Cliente> findClientesByCedula(String cedula);
+
+
+    List<Cliente> findClientesByNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase (String nombres, String apellidos);
+
 }
