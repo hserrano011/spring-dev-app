@@ -31,4 +31,8 @@ class CuentaServiceTest {
         );
         assertTrue(cuentaDtos.size() > 1);
     }
+
+    @Test
+    void creacionDeCuentaYNotificacion() {
+    }
 }
